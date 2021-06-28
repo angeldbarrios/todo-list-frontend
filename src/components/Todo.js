@@ -51,7 +51,8 @@ export default (props) => {
           id={`check-for-${todo.id}`}
           className="form-check-input" 
           type="checkbox" 
-          value={todo.checked}  
+          value={todo.checked}
+          defaultChecked={ todo.checked }
           onClick={handleCheck} />
 
         <label className="form-check-label mx-1" htmlFor={`check-for-${todo.id}`} title={todo.created_at} style={editModehandleDisplayNoneStyle(true)}>

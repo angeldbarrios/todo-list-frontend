@@ -23,7 +23,7 @@ export default class Filters extends React.Component {
   };
 
   getTodosHandler = (sortField, sortOrder) => {
-    if (!sortField || sortField === 'none') return;
+    if (sortField === undefined || sortField === 'none') sortField = null;
     else if (sortOrder === 'desc') sortField = `-${sortField}`
     this.props.getTodos(1, sortField);
   };
@@ -44,7 +44,7 @@ export default class Filters extends React.Component {
             <label className="text-secondary my-2 pr-2 view-opt-label">Sort</label>
   
             <select className="custom-select btn my-2" onChange={this.handleSelectChange}>
-              <option value={undefined} defaultValue>none</option>
+              <option value={null} defaultValue>none</option>
               {this.sortableFields.map((field, index) => {
                 return (
                   <option key={`${field}-${index}`} value={field}>

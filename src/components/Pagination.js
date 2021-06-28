@@ -3,30 +3,30 @@ import React from 'react';
 export default (props) => {
 
   const handlePageChage = (numPage) => {
-    if(numPage <= 0 || numPage > props.totalPages) {
+    if (numPage <= 0 || numPage > props.totalPages) {
       return;
     }
 
     props.getTodos(numPage);
   };
 
+
   const generatePages = () => {
     const pageButtons = [];
 
     for (let i = 1; i <= props.totalPages; i++) {
       pageButtons.push(
-        <>
+        <React.Fragment key={`page-${i}`}>
           {
             props.currentPage === i
-              ? <li class="page-item active" aria-current="page">
-                <span class="page-link">{i}</span>
+              ? <li key={`page-${i}`} className="page-item active" aria-current="page">
+                <span className="page-link">{i}</span>
               </li>
-              : <li className="page-item" onClick={() => handlePageChage(i)}>
+              : <li key={`page-${i}`} className="page-item" onClick={() => handlePageChage(i)}>
                 <a className="page-link" href="#">{i}</a>
               </li>
           }
-        </>
-      );
+        </React.Fragment>);
     }
 
     return pageButtons;
