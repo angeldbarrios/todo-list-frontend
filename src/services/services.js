@@ -1,8 +1,10 @@
 import axios from 'axios';
 
+let BASE = '';
+
 export async function getTodos(page = 1, sortField) {
   try {
-    const response = await axios.get('http://localhost:3000/api/v1/todo', {
+    const response = await axios.get(`${BASE}/api/v1/todo`, {
       params: { page: page, sort: sortField }
     });
 
@@ -23,18 +25,18 @@ export async function getTodos(page = 1, sortField) {
 };
 
 export async function createTodo(data) {
-  const response = await axios.post('http://localhost:3000/api/v1/todo', data);
+  const response = await axios.post(`${BASE}/api/v1/todo`, data);
   console.log(response.data);
 };
 
 export async function editTodo(todoId, data) {
-  const response = await axios.put(`http://localhost:3000/api/v1/todo/${todoId}`, data);
+  const response = await axios.put(`${BASE}/api/v1/todo/${todoId}`, data);
   console.log(response.data);
 };
 
 
 
 export async function deleteTodo(todoId) {
-  const response = await axios.delete(`http://localhost:3000/api/v1/todo/${todoId}`);
+  const response = await axios.delete(`${BASE}/api/v1/todo/${todoId}`);
   console.log(response.data);
 };
